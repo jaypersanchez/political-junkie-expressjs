@@ -6,7 +6,7 @@ import {Link, useHistory} from 'react-router-dom'
 function CreateGroup() {
 
     const profile_id = localStorage.getItem("profile_id")
-    const [owner,setowner]=useState({profile_id});
+    const [owner,setowner]=useState(profile_id);
     const [groupname,setgroupname] = useState('');
     const [privacy,setprivacy] = useState('public')
     const [nomembers,setnomembers]=useState(0)
@@ -15,15 +15,17 @@ function CreateGroup() {
     
 
     function createGroup(e) {
-        //e.preventDefault()
+
+        e.preventDefault()
         const group = {
           owner:owner,
           name:groupname,
           privacy:privacy,
           no_members:nomembers
         }
-        console.log("data: " + group.owner)
-        axios.post('/createnewgroup', {owner:owner,name:groupname,privacy:privacy,no_members:nomembers})
+        console.log("data: " + group)
+        axios.post('/createnewgroup', group)
+        .then(history.push('/posts'))
         .catch(err=>console.log(err))
     }
 
