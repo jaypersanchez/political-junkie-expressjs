@@ -23,11 +23,11 @@ const postSchema = new mongoose.Schema({
         trim:true
     },
     postgroupid: {
-        //this is the _id value from groupSchema.  This is how this specific post knows which group it belongs too
+        //this is the _id value from groupSchema.  This is how this specific post knows which post in a group it belongs too
         type: String,
         require: true,
         trim: true
     }
 })
 
-module.exports = mongoose.model('blog', postSchema)
+module.exports = mongoose.model('postSchema', postSchema)

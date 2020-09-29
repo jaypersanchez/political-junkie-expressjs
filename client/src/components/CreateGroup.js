@@ -25,7 +25,7 @@ function CreateGroup() {
         }
         console.log("data: " + group)
         axios.post('/createnewgroup', group)
-        .then(history.push('/posts'))
+        .then(history.push('/mygroups'))
         .catch(err=>console.log(err))
     }
 

@@ -6,6 +6,8 @@ import Register from './components/Register'
 import Post from './components/Post'
 import AddPost from './components/AddPost'
 import CreateGroup from './components/CreateGroup'
+import Mygroups from './components/Mygroups'
+import MyGroupPost from './components/MyGroupPost'
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Route exact path='/posts' component={Post}></Route>
         <Route exact path='/addpost' component={AddPost}></Route>
         <Route exact path='/createnewgroup' component={CreateGroup}></Route>
+        <Route exact path='/mygroups' component={Mygroups}></Route>
+        <Route exact path='/mygrouppost' component={MyGroupPost}></Route>
       </Switch>
     </Router>
 

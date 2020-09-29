@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react'
+import {Link, useHistory} from 'react-router-dom'
 import NavBar from './Navbar'
 import axios from 'axios'
 
@@ -23,8 +24,10 @@ function Post() {
 
     return (
         <div>
-            <NavBar /> 
+            <div> 
             <h3 className='bg-primary p-2 text-center'>Read All the Blogs Posted on the Board</h3>
+            <Link className="nav-link" to="/addpost">Add Post<span className="sr-only">(current)</span></Link>
+            </div>
             {
                 post.map((data,key)=>(
                    <div className='container'>

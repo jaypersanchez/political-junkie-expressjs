@@ -21,8 +21,8 @@ function Login() {
         axios.post('/login',data)
         .then(resp=>{
             if(resp.data=="1") {
-                //history.push('/groups')
-                history.push('/posts')
+                history.push('/mygroups')
+                //history.push('/posts')
             }
             else if(resp.data=="0") {
                 setmsg("Invalid Credentials")

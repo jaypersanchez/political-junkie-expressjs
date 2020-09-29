@@ -18,21 +18,30 @@ route.post('/createnewgroup', (req, res)=>{
     
 })
 
+//Get post for specific group post based on groupmodel _id value
+route.get('/mygrouppost', (req, res)=>{
+    let _groupId = req.group_id
+    Group.find({_id:_groupId}, (err, data)=>{
+        if(err) {
+            res.json(err)
+        }
+        else {
+            res.json(data)
+        }
+    })
+})
 
 //get list of groups for a specific profile by using the User _id
 route.get('/getgroups',(req,res)=>{
-    let email = req.query.email
-    //console.log(email)
-    Group.findOne({email:email})
-    .then(found=>{
-        //console.log("User exists");
-        if(found.email==email) {
-            //res.send(found)
-            res.json(found)
+    let _owner = req.query.profile_id
+    Group.find({owner:_owner}, (err, data)=>{
+        if(err) {
+            res.json(err)
         }
-        
+        else {
+            res.json(data)
+        }
     })
-    .catch(err=>res.send("User Not Found"))
 })
 
 //Get Profile from user

@@ -6,8 +6,8 @@ function Navbar() {
     const profile_fullname = localStorage.getItem("screen_name")
     
     function signOut(e) {
-        e.preventDefault()
-        localStorage.clear()
+        //e.preventDefault()
+        window.localStorage.clear()
     }
 
     
@@ -22,7 +22,7 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <Link className="nav-link" to="/posts">Home <span className="sr-only">(current)</span></Link>
+                    <Link className="nav-link" to="/mygroups">Home <span className="sr-only">(current)</span></Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/createnewgroup">Create New Group <span className="sr-only">(current)</span></Link>
