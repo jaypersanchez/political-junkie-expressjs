@@ -20,9 +20,10 @@ function Login() {
 
         axios.post('/login',data)
         .then(resp=>{
-            if(resp.data=="1") {
+            if(resp.data.success=="1") {
+                //need to get profile Id
+                sessionStorage.setItem("profile_id",resp.data.profile_id)
                 history.push('/mygroups')
-                //history.push('/posts')
             }
             else if(resp.data=="0") {
                 setmsg("Invalid Credentials")
@@ -31,9 +32,10 @@ function Login() {
                 setmsg("No user Found.  Please register this user")
             }
         })
-        .then(()=>{
-            //set everthing into localStorage for session handling
-            localStorage.setItem("email",email)
+        .then(resp=>{
+            //set everthing into sessionStorage for session handling
+            sessionStorage.setItem("email",email)
+            
         })
         .catch(err=>console.log(err))
     }

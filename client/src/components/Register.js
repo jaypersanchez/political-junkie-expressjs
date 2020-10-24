@@ -1,15 +1,18 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { connect } from 'react-redux'
 import axios from 'axios'
+import { setAlert } from '../actions/alert'
 
 
-function Register() {
+function Register(props) {
     const [firstname,setfirstname]=useState('')
     const [lastname,setlastname]=useState('')
     const [dob,setdob]=useState('')
     const [email, setemail]=useState('')
     const [pass, setpass]=useState('')
     const [screenname, setscreenname]=useState('')
+    const history = useHistory()
 
     function Register(e) {
         let data = {
@@ -24,10 +27,13 @@ function Register() {
         axios.post('/register',data)
         .then(resp=>{
             if(resp) {
-                //history.pushState('/login')
-                alert('Successfully registered.  Now Login')
+                console.log('Successfully registered')
+                alert('You are now registered')
+                //history.push('/login')
+                
             }
             else {
+                console.log('Failed to register')
                 alert('Failed to register')
             }
         })
@@ -72,4 +78,4 @@ function Register() {
     )
 }
 
-export default Register
+export default connect(null,{setAlert})(Register)

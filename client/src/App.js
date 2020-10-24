@@ -8,11 +8,14 @@ import AddPost from './components/AddPost'
 import CreateGroup from './components/CreateGroup'
 import Mygroups from './components/Mygroups'
 import MyGroupPost from './components/MyGroupPost'
+//Redux
+import {Provider} from 'react-redux'
+import store  from './store'
 
 
 function App() {
   return (
-    
+    <Provider store={store}>
     <Router>
       <Switch>
         <Route exact path='/' component={Login}></Route>
@@ -24,7 +27,7 @@ function App() {
         <Route exact path='/mygrouppost' component={MyGroupPost}></Route>
       </Switch>
     </Router>
-
+    </Provider>
   );
 }
 

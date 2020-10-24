@@ -6,8 +6,8 @@ function Navbar() {
     const profile_fullname = localStorage.getItem("screen_name")
     
     function signOut(e) {
-        //e.preventDefault()
-        window.localStorage.clear()
+        e.preventDefault()
+        window.close()
     }
 
     

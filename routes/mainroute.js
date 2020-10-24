@@ -20,8 +20,8 @@ route.post('/createnewgroup', (req, res)=>{
 
 //Get post for specific group post based on groupmodel _id value
 route.get('/mygrouppost', (req, res)=>{
-    let _groupId = req.group_id
-    Group.find({_id:_groupId}, (err, data)=>{
+    let _postgroupid = req.query.postgroupid
+    Blog.find({postgroupid:_postgroupid}, (err, data)=>{
         if(err) {
             res.json(err)
         }
@@ -61,7 +61,8 @@ route.get('/profile',(req,res)=>{
 
 //Post retrieval
 route.get('/posts', (req, res)=>{
-   Blog.find((err,data)=>{
+   let _postgroupid = req.query.postgroupid
+   Blog.find({postgroupid:_postgroupid},(err,data)=>{
        if(err) {
            res.json(err)
        }
@@ -105,11 +106,10 @@ route.post('/login',(req,res)=>{
     .then(found=>{
         console.log("User exists");
         if(found.password==req.body.password) {
-            //res.send(req)
-            res.send("1")
+            res.send({success:1,profile_id:found._id})
         }
         else {
-            res.send("0")
+            res.send({success:0,profiel_id:"fail"})
         }
     })
     .catch(err=>res.send("User Not Found"))

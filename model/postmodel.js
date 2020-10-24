@@ -30,4 +30,4 @@ const postSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('postSchema', postSchema)
+module.exports = mongoose.model('blogs', postSchema)

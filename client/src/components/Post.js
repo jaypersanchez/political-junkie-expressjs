@@ -3,12 +3,14 @@ import {Link, useHistory} from 'react-router-dom'
 import NavBar from './Navbar'
 import axios from 'axios'
 
-function Post() {
+function Post(props) {
+    let _postgroupid = props._postgroupid 
     const [post, setpost]=useState([])
     
     
     useEffect(()=>{
-        axios.get('/posts')
+        axios.get(`/posts?postgroupid=${_postgroupid}`)
+        .then(res=>console.log(_postgroupid))
         .then(res=>setpost(res.data))
         .then(()=>{
             axios.get(`/profile?email=${localStorage.getItem("email")}`)

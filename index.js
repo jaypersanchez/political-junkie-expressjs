@@ -16,8 +16,8 @@ app.use('/', MainRouter)
 //MongoDB
 const Mongourl = 'mongodb://localhost:27017/junkie'
 const MongoOnline = 'mongodb+srv://dbblog:dbblog@cluster0.a0orf.mongodb.net/junkie?retryWrites=true&w=majority'
-//mongoose.connect(MongoOnline || Mongourl,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
-mongoose.connect(MongoOnline,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
+mongoose.connect(MongoOnline || Mongourl,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
+//mongoose.connect(MongoOnline,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
     if(!err) {
         console.log('Connected to Polical Junkie Database')
     }
