@@ -3,6 +3,7 @@ const route = express.Router()
 const User = require('../model/usermodel')
 const Blog = require('../model/postmodel')
 const Group = require('../model/groupmodel')
+const GroupAssociation = require('../model/groupassociations')
 
 //Adding new group
 route.post('/createnewgroup', (req, res)=>{
@@ -16,6 +17,19 @@ route.post('/createnewgroup', (req, res)=>{
         }
     })
     
+})
+
+//add group to group associations.  this is a list of group(s) that a user belongs too
+route.post('/joingroup', (req, res) => {
+    let grpAssociation = new GroupAssociation(req.body)
+    grpAssociation.save((err,docs)=>{
+        if(err) {
+            res.json(err)
+        }
+        else {
+            res.json('Successfully Joined')
+        }
+    })
 })
 
 //Get post for specific group post based on groupmodel _id value
@@ -43,6 +57,34 @@ route.get('/getgroups',(req,res)=>{
         }
     })
 })
+
+//get list of groups a user is a member of.  From groupassociations collections
+route.get('/getassociatedgroups',(req,res)=>{
+    let _profile_id = req.query.profile_id
+    Group.find({profile_id:_profile_id}, (err, data)=>{
+        if(err) {
+            res.json(err)
+        }
+        else {
+            res.json(data)
+        }
+    })
+})
+
+//search for groups by name
+route.get('/searchgroups',(req,res)=>{
+    let str = req.query.search
+    Group.find({ name: {$regex: str, $options: "i"} },(err, data)=>{
+        if(err) {
+            res.json(err)
+        }
+        else {
+            res.json(data)
+        }
+    })
+})
+
+ 
 
 //Get Profile from user
 route.get('/profile',(req,res)=>{

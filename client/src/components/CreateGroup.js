@@ -8,6 +8,7 @@ function CreateGroup() {
     const profile_id = sessionStorage.getItem("profile_id")
     const [owner,setowner]=useState(profile_id);
     const [groupname,setgroupname] = useState('');
+    const [groupdesc, setgroupdesc] = useState('')
     const [privacy,setprivacy] = useState('public')
     const [nomembers,setnomembers]=useState(0)
     const [msg,setmsg]=useState('')
@@ -20,6 +21,7 @@ function CreateGroup() {
         const group = {
           owner:owner,
           name:groupname,
+          desc:groupdesc,
           privacy:privacy,
           no_members:nomembers
         }
@@ -49,6 +51,15 @@ function CreateGroup() {
                                     className="form-control" 
                                     onChange={(e)=>{setgroupname(e.target.value)}} 
                                     placeholder="Enter Group Name" required />
+                                </div>
+                                <div className="form-group">
+                                <label>Description of the Group</label>
+                                    <textarea 
+                                    type="text" 
+                                    value={groupdesc} 
+                                    className="form-control" 
+                                    onChange={(e)=>{setgroupdesc(e.target.value)}} 
+                                    placeholder="Describe the purpose of this group" />
                                 </div>
 
                                 <button type="submit" className="btn btn-primary">Create Group</button>

@@ -13,6 +13,11 @@ const groupSchema = new mongoose.Schema({
         require: true,
         trim: true
     },
+    desc: {
+        type:String,
+        require: false,
+        trim: true
+    },
     privacy: {
         type:String,
         require: false
