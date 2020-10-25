@@ -7,7 +7,7 @@ import NavBar from './Navbar'
 import axios from 'axios'
 import {Link, useHistory} from 'react-router-dom'
 
-function Mygroups() {
+function MyAssociatedGroups() {
     let profile_id = sessionStorage.getItem('profile_id')
     const [group, setgroup]=useState([])
     const [postgroupid, setpostgroupid]=useState()
@@ -15,7 +15,7 @@ function Mygroups() {
    useEffect(()=>{
         
         //get groups it owns
-        axios.get(`/getgroups?profile_id=${profile_id}`)
+        axios.get(`/getpublicgroups`)
         .then(
             res=>setgroup(res.data),
             //res=>setpostgroupid(res.data.postgroupid),
@@ -30,13 +30,12 @@ function Mygroups() {
     return (
         <div>
             <NavBar /> 
-            <h3 className='bg-primary p-2 text-center'>Groups You Own</h3>
+            <h3 className='bg-primary p-2 text-center'>Public Groups</h3>
             {
                 group.map((data,key)=>(
                    <div className='container'>
-                        <Link to={{pathname: '/mygrouppost', postgroupid:data._id, groupname:data.name}} style={{textDecoration:'none',color:'#000'}} className='text-center mt-5'>{data.name}</Link>
+                        <Link to={{pathname: '/publicgrouppost', postgroupid:data._id, groupname:data.name}} style={{textDecoration:'none',color:'#000'}} className='text-center mt-5'>{data.name}</Link>
                         <label hidden="true">{data._id}</label>
-                        
                         <hr style={{border:'1pz dotted white'}} />
                    </div>
                 ))
@@ -48,4 +47,4 @@ function Mygroups() {
     )
 }
 
-export default Mygroups
+export default MyAssociatedGroups

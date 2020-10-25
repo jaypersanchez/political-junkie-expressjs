@@ -25,7 +25,7 @@ function Navbar() {
                     <Link className="nav-link" to="/mygroups">Home <span className="sr-only">(current)</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to='/myassociatedgroups'>View Associated Groups <span className="sr-only">(current)</span></Link>
+                    <Link className="nav-link" to='/publicgroups'>View Public Groups <span className="sr-only">(current)</span></Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/createnewgroup">Create New Group <span className="sr-only">(current)</span></Link>

@@ -71,6 +71,19 @@ route.get('/getassociatedgroups',(req,res)=>{
     })
 })
 
+//get list of groups that are public and open for anyone to view and post comment
+route.get('/getpublicgroups',(req,res)=>{
+    Group.find({privacy:"public"}, (err, data)=>{
+        if(err) {
+            res.json(err)
+        }
+        else {
+            res.json(data)
+        }
+    })
+   
+})
+
 //search for groups by name
 route.get('/searchgroups',(req,res)=>{
     let str = req.query.search
