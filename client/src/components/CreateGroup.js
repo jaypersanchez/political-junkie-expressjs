@@ -5,7 +5,7 @@ import {Link, useHistory} from 'react-router-dom'
 
 function CreateGroup() {
 
-    const profile_id = localStorage.getItem("profile_id")
+    const profile_id = sessionStorage.getItem("profile_id")
     const [owner,setowner]=useState(profile_id);
     const [groupname,setgroupname] = useState('');
     const [privacy,setprivacy] = useState('public')
