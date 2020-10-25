@@ -139,14 +139,31 @@ brew services start mongodb/brew/mongodb-community
 
 ## Required Install for Deployment
 
-1. Install Heroku CLI
+1. Install Heroku CLI and signup for an account
 2. Signup for Mongo Atlas a cloud based mongo database cluster
 
+## Deploy Steps
+
+1. Log into your Heroku from console
+````
+heroku login
+````
+This will open the Heroku login page on he browser.  Provide your credential
+2. Run Command 
+````
+git init
+````
+3. change to root, outside client directory, ans run the command below
+````
 heroku create <name of the project>
+````
+4. Run the following git commands
+````
+git add .
+git commit -m "comment"
+git push heroku master
+````
 
 https://blogmern.herokuapp.com/ | https://git.heroku.com/blogmern.git
 https://jayperblog.herokuapp.com/ | https://git.heroku.com/jayperblog.git
 
-git add .
-git commit -m "comment"
-git push heroku master

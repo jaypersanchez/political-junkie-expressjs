@@ -6,6 +6,7 @@ import React, {useState, useEffect} from 'react'
 import NavBar from './Navbar'
 import axios from 'axios'
 import {Link, useHistory} from 'react-router-dom'
+import ReactPlayer from "react-player"
 
 function Mygroups() {
     let profile_id = sessionStorage.getItem('profile_id')
@@ -36,8 +37,10 @@ function Mygroups() {
                    <div className='container'>
                         <Link to={{pathname: '/mygrouppost', postgroupid:data._id, groupname:data.name}} style={{textDecoration:'none',color:'#000'}} className='text-center mt-5'>{data.name}</Link>
                         <label hidden="true">{data._id}</label>
-                        
                         <hr style={{border:'1pz dotted white'}} />
+                        <p>
+                        
+                        </p>
                    </div>
                 ))
             }

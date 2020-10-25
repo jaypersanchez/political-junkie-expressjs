@@ -35,7 +35,7 @@ function MyAssociatedGroups() {
                 group.map((data,key)=>(
                    <div className='container'>
                         <Link to={{pathname: '/publicgrouppost', postgroupid:data._id, groupname:data.name}} style={{textDecoration:'none',color:'#000'}} className='text-center mt-5'>{data.name}</Link>
-                        <label hidden="true">{data._id}</label>
+                        <p><label>{data.desc}</label></p>
                         <hr style={{border:'1pz dotted white'}} />
                    </div>
                 ))
