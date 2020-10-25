@@ -78,6 +78,7 @@ route.post('/addpost', (req, res)=>{
     adding.save((err,docs)=>{
         if(err) {
             res.json('Try again')
+            console.log(err)
         }
         else {
             res.json('Post Added')

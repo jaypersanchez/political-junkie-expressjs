@@ -11,12 +11,17 @@ import {Link, useHistory} from 'react-router-dom'
 function MyGroupPost(props) {
 
     let postgroupid = props.location.postgroupid
+    let groupname = props.location.groupname
+    let properties = {
+        _postgroupid:postgroupid,
+        _groupname:groupname
+    }
     //console.log(`postgroupid::${postgroupid}`)
 
     return (
         <div>
             <NavBar />
-            <Post _postgroupid={postgroupid} />
+            <Post {...properties} />
         </div>
     )
 }

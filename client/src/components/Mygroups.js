@@ -30,7 +30,7 @@ function Mygroups() {
             {
                 group.map((data,key)=>(
                    <div className='container'>
-                        <Link to={{pathname: '/mygrouppost', postgroupid:data._id}} style={{textDecoration:'none',color:'#000'}} className='text-center mt-5'>{data.name}</Link>
+                        <Link to={{pathname: '/mygrouppost', postgroupid:data._id, groupname:data.name}} style={{textDecoration:'none',color:'#000'}} className='text-center mt-5'>{data.name}</Link>
                         <label hidden="true">{data._id}</label>
                         <h6 className='text-white mt-4'>{data.no_members} Members</h6>
                         <hr style={{border:'1pz dotted white'}} />

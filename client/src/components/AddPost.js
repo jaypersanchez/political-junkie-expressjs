@@ -3,19 +3,31 @@ import NavBar from './Navbar'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 
-function AddPost() {
+function AddPost(props) {
 
+    let _postgroupid = props.location.postgroupid
+    let groupname = props.location.groupname
+    console.log(`_postgroupid:${_postgroupid} ${groupname}`)
     const [title, settitle]=useState('')
     const [auth,setauth]=useState('')
     const [desc,setdesc]=useState('')
     const [msg,setmsg]=useState('')
+    let author = sessionStorage.getItem("profile_id")
+    let screenname = sessionStorage.getItem("screen_name")
+    //get current date
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; 
+    var yyyy = today.getFullYear();
 
     function handleSubmit(e) {
         e.preventDefault()
         const blog = {
-            title:title,
             desc:desc,
-            auth:auth
+            poster_profile_id:author,
+            poster_screen_name: screenname ,
+            posted_date: `${mm}/${dd}/${yyyy}`,
+            postgroupid: _postgroupid
         }
 
         axios.post('/addpost', blog)
@@ -28,40 +40,21 @@ function AddPost() {
            <NavBar /> 
            
             <div className='container mt-5'>
-            <h2 className='m-5 text-center'>Add New Post</h2>
+            <h2 className='m-5 text-center'>Say it out loud</h2>
                 <form  className='col-md-6 mx-auto' onSubmit={handleSubmit}>
                 <h5 className='p-3 text-center text-white'>{msg}</h5>
-                                <div className="form-group">
-                                    <label>Title</label>
-                                    <input 
-                                    type="text" 
-                                    value={title} 
-                                    className="form-control" 
-                                    onChange={(e)=>{settitle(e.target.value)}} 
-                                    placeholder="Enter Title" required />
-                                </div>
+                                
 
                                 <div className="form-group">
-                                    <label>Description</label>
                                     <textarea 
                                     type="text" value={desc} 
                                     className="form-control" 
                                     onChange={(e)=>{setdesc(e.target.value)}}
                                     rows='8' 
-                                    placeholder="Enter Description" required />
+                                    placeholder="What's your comment" required />
                                 </div>
-
-                                <div className="form-group">
-                                    <label>Author</label>
-                                    <input 
-                                    type="text" value={auth} 
-                                    className="form-control" 
-                                    onChange={(e)=>{setauth(e.target.value)}} 
-                                    placeholder="Enter Author" required />
-                                </div>
-
                                 <button type="submit" className="btn btn-primary">Post</button>
-                                <Link to='/posts' className='btn btn-dark ml-4'>Back to Home</Link>
+                                <Link to={{pathname: '/mygrouppost', postgroupid:_postgroupid, groupname:groupname}} className='btn btn-dark ml-4'>Back to Home</Link>
                 </form>
                 
             </div>

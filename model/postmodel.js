@@ -2,17 +2,17 @@ const express= require('express')
 const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-        trim:true
-    },
     desc: {
         type: String,
         required: true,
         trim:true
     },
-    auth: {
+    poster_profile_id: {
+        type: String,
+        required: true,
+        trim:true
+    },
+    poster_screen_name: {
         type: String,
         required: true,
         trim:true
@@ -30,4 +30,4 @@ const postSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('blogs', postSchema)
+module.exports = mongoose.model('blog', postSchema)
