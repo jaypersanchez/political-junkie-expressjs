@@ -23,6 +23,7 @@ function Login() {
             if(resp.data.success=="1") {
                 //need to get profile Id
                 sessionStorage.setItem("profile_id",resp.data.profile_id)
+                sessionStorage.setItem("screen_name",resp.data.screen_name)
                 history.push('/mygroups')
             }
             else if(resp.data=="0") {

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 
 function Navbar() {
-    const profile_fullname = localStorage.getItem("screen_name")
+    const profile_fullname = sessionStorage.getItem("screen_name")
     
     function signOut(e) {
         e.preventDefault()

@@ -10,16 +10,11 @@ function Post(props) {
     
     useEffect(()=>{
         axios.get(`/posts?postgroupid=${_postgroupid}`)
-        .then(res=>console.log(_postgroupid))
-        .then(res=>setpost(res.data))
-        .then(()=>{
-            axios.get(`/profile?email=${localStorage.getItem("email")}`)
-            .then(res=>{
-                localStorage.setItem("screen_name",res.data.screenname)
-                localStorage.setItem("profile_id",res.data._id)
-            })
-            .catch(err=>console.log(err))
-        })
+        .then(
+            res=>setpost(res.data),
+            //res=>setpostgroupid(res.data.postgroupid),
+            //res=>console.log(postgroupid)
+        )
         .catch(err=>console.log(err))
     }) 
     

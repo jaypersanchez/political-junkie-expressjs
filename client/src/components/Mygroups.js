@@ -17,8 +17,8 @@ function Mygroups() {
         axios.get(`/getgroups?profile_id=${profile_id}`)
         .then(
             res=>setgroup(res.data),
-            res=>setpostgroupid(res.data.postgroupid),
-            res=>console.log(postgroupid)
+            //res=>setpostgroupid(res.data.postgroupid),
+            //res=>console.log(postgroupid)
         )
         .catch(err=>console.log(err))
     })
@@ -26,11 +26,12 @@ function Mygroups() {
     return (
         <div>
             <NavBar /> 
-            <h3 className='bg-primary p-2 text-center'>{localStorage.getItem('screen_name')} {postgroupid} {postgroupid}</h3>
+            <h3 className='bg-primary p-2 text-center'>List of groups you own or belong to {sessionStorage.getItem('screen_name')} {postgroupid} {postgroupid}</h3>
             {
                 group.map((data,key)=>(
                    <div className='container'>
-                        <Link to={{pathname: '/mygrouppost', postgroupid:{postgroupid}}} style={{textDecoration:'none',color:'#000'}} className='text-center mt-5'>{data.name}</Link>
+                        <Link to={{pathname: '/mygrouppost', postgroupid:data._id}} style={{textDecoration:'none',color:'#000'}} className='text-center mt-5'>{data.name}</Link>
+                        <label hidden="true">{data._id}</label>
                         <h6 className='text-white mt-4'>{data.no_members} Members</h6>
                         <hr style={{border:'1pz dotted white'}} />
                    </div>

@@ -106,7 +106,7 @@ route.post('/login',(req,res)=>{
     .then(found=>{
         console.log("User exists");
         if(found.password==req.body.password) {
-            res.send({success:1,profile_id:found._id})
+            res.send({success:1,profile_id:found._id,screen_name:found.screenname})
         }
         else {
             res.send({success:0,profiel_id:"fail"})

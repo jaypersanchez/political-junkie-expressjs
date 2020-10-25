@@ -11,7 +11,7 @@ import {Link, useHistory} from 'react-router-dom'
 function MyGroupPost(props) {
 
     let postgroupid = props.location.postgroupid
-    console.log(`postgroupid::${postgroupid}`)
+    //console.log(`postgroupid::${postgroupid}`)
 
     return (
         <div>
