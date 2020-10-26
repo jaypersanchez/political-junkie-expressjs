@@ -1,6 +1,18 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Create New React Project
+# Project Overview
+
+Political Junkie is a social media website is geared for those who follow politics.  This is a place where people can speak their mind no matter what their political leanings are.  There is no safe space here but personal attacks will not be permitted.  This project was motivated during the 2020 U.S Presidential election when Twitter and Facebook started to be accused of muting any comments not accepted by each giant organization. 
+
+## Features to Add
+
+1. Hashing of user password
+2. Join groups that are private
+3. Allow comments to post and reply to comments
+4. Use Redux to replace sessionStorage
+5. UI cosmetic work
+
+## Development and Creating New React Project
 
 1. Create an empty directory for the project and change directory into it
 2. Run command to create the React application
@@ -164,6 +176,4 @@ git commit -m "comment"
 git push heroku master
 ````
 
-https://blogmern.herokuapp.com/ | https://git.heroku.com/blogmern.git
-https://jayperblog.herokuapp.com/ | https://git.heroku.com/jayperblog.git
 
