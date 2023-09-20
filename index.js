@@ -13,34 +13,18 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.json())
 app.use('/', MainRouter)
 
-//MongoDB
-const Mongourl = 'mongodb://localhost:27017/junkie'
-const MongoOnline = 'mongodb+srv://dbblog:dbblog@cluster0.a0orf.mongodb.net/junkie?retryWrites=true&w=majority'
-mongoose.connect(MongoOnline || Mongourl,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
-//mongoose.connect(MongoOnline,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
-    if(!err) {
-        console.log('Connected to Polical Junkie Database')
-    }
-    else {
-        console.log('Connection attempt failed')
-    }
+// connect to database
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/junkie");
+
+mongoose.connection.on("connected", () => {
+    //checks if the connection is established
+  console.log("Mongo Connected!")
+
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+  })
 })
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'))
-    app.get('*', (req,res)=>{
-        res.sendFile(path.resolve(__dirname,'client', 'build','index.html'))
-    }).then(()=>{
-        console.error();
-    })
-}
-
-//app.listen(PORT,()=>console.log(`Server Running on port ${PORT}`));
-app.listen(PORT, (err)=>{
-    if(!err) {
-        console.log(`Server Running on port ${PORT}`);
-    }
-    else {
-        console.log(`Unable to connect.  Reason: ${err}`)
-    }
-})
+mongoose.connection.on("error", err => {
+  console.log(err)
+}) 

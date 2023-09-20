@@ -5,6 +5,24 @@ const Blog = require('../model/postmodel')
 const Group = require('../model/groupmodel')
 const GroupAssociation = require('../model/groupassociations')
 
+route.get('/test', (req, res) => {
+    try {
+        // Your code that might throw an error goes here
+        const simulateError = false; // Set to true to simulate an error
+    
+        if (simulateError) {
+          // Simulate an error
+          throw new Error('An error occurred');
+        } else {
+          // Successful response
+          res.json('Test Successful');
+        }
+      } catch (err) {
+        // Handle errors here
+        res.status(500).json({ error: err.message });
+      }
+})
+
 //Adding new group
 route.post('/createnewgroup', (req, res)=>{
     let group = new Group(req.body)
